@@ -33,10 +33,10 @@ check_status() {
   fi
 }
 
-check_status 201 -X POST "$base_url/api/teacher" +  -H 'Content-Type: application/json' +  -d '{"name":"Ana Silva","eMail":"ana@example.com","urlLattes":"https://lattes.cnpq.br/1234567890123456","dataAdmissao":"2026-02-01"}'
+check_status 201 -X POST "$base_url/api/teacher" -H 'Content-Type: application/json' -d '{"name":"Ana Silva","eMail":"ana@example.com","urlLattes":"https://lattes.cnpq.br/1234567890123456","dataAdmissao":"2026-02-01"}'
 jq -e '.id == 1 and .eMail == "ana@example.com"' "$response" >/dev/null
 
-check_status 400 -X POST "$base_url/api/teacher" +  -H 'Content-Type: application/json' +  -d '{"name":"Inválido","eMail":"sem-arroba","urlLattes":"https://lattes.cnpq.br/1234567890123456","dataAdmissao":"2026-02-01"}'
+check_status 400 -X POST "$base_url/api/teacher" -H 'Content-Type: application/json' -d '{"name":"Inválido","eMail":"sem-arroba","urlLattes":"https://lattes.cnpq.br/1234567890123456","dataAdmissao":"2026-02-01"}'
 
 check_status 200 "$base_url/api/teacher/1"
 jq -e '.name == "Ana Silva"' "$response" >/dev/null
@@ -44,11 +44,11 @@ jq -e '.name == "Ana Silva"' "$response" >/dev/null
 check_status 200 "$base_url/api/teacher"
 jq -e 'length == 1' "$response" >/dev/null
 
-check_status 204 -X PUT "$base_url/api/teacher/1" +  -H 'Content-Type: application/json' +  -d '{"id":1,"name":"Ana Souza","eMail":"ana.souza@example.com","urlLattes":"https://lattes.cnpq.br/1234567890123456","dataAdmissao":"2026-02-01"}'
+check_status 204 -X PUT "$base_url/api/teacher/1" -H 'Content-Type: application/json' -d '{"id":1,"name":"Ana Souza","eMail":"ana.souza@example.com","urlLattes":"https://lattes.cnpq.br/1234567890123456","dataAdmissao":"2026-02-01"}'
 check_status 200 "$base_url/api/teacher/1"
 jq -e '.name == "Ana Souza"' "$response" >/dev/null
 
-check_status 400 -X PUT "$base_url/api/teacher/1" +  -H 'Content-Type: application/json' +  -d '{"id":2,"name":"Ana Souza","eMail":"ana.souza@example.com","urlLattes":"https://lattes.cnpq.br/1234567890123456","dataAdmissao":"2026-02-01"}'
+check_status 400 -X PUT "$base_url/api/teacher/1" -H 'Content-Type: application/json' -d '{"id":2,"name":"Ana Souza","eMail":"ana.souza@example.com","urlLattes":"https://lattes.cnpq.br/1234567890123456","dataAdmissao":"2026-02-01"}'
 
 check_status 204 -X DELETE "$base_url/api/teacher/1"
 check_status 404 "$base_url/api/teacher/1"
