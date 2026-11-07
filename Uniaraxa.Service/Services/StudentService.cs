@@ -38,6 +38,5 @@ namespace Uniaraxa.Service.Services
         {
             _studentRepository.UpdateStudent(student);
         }
-        }
     }
 }
