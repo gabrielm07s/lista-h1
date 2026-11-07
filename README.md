@@ -21,7 +21,7 @@ dotnet build Uniaraxa.slnx
 dotnet run --project Uniaraxa.API --urls http://localhost:5000
 ```
 
-O workflow `.github/workflows/build.yml` executa restore e build com .NET 10 a cada push em `main` e em pull requests.
+O workflow `.github/workflows/build.yml` executa restore, build e um teste HTTP das cinco operações com .NET 10 a cada push em `main` e em pull requests.
 
 Na configuração de desenvolvimento, o documento OpenAPI fica em `/openapi/v1.json`.
 
