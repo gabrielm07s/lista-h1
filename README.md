@@ -21,6 +21,8 @@ dotnet build Uniaraxa.slnx
 dotnet run --project Uniaraxa.API --urls http://localhost:5000
 ```
 
+O workflow `.github/workflows/build.yml` executa restore e build com .NET 10 a cada push em `main` e em pull requests.
+
 Na configuração de desenvolvimento, o documento OpenAPI fica em `/openapi/v1.json`.
 
 ## API de Teacher
@@ -62,7 +64,7 @@ O repositório de Teacher guarda os dados somente na memória do processo. Os re
 
 ## Histórico de commits
 
-Cada etapa foi registrada em um commit próprio: importação do projeto da aula, correção da sintaxe existente, implementação das camadas de Teacher, exposição dos endpoints e esta documentação.
+Cada etapa foi registrada em um commit próprio: importação do projeto da aula, correção da sintaxe existente, implementação das camadas de Teacher, exposição dos endpoints, documentação e verificação de build.
 
 ## Referências
 
